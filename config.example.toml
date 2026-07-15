@@ -1,0 +1,26 @@
+# Example configuration for the `rfb` CLI.
+#
+# Copy to `config.toml` (which is git-ignored) and edit:
+#
+#     cp config.example.toml config.toml
+#
+# Every key is optional. Anything omitted falls back to the built-in default,
+# which already matches a stock Polar node — so the defaults below are what you
+# get with no config file at all.
+#
+# Precedence, highest first:
+#   command-line flag  ->  environment variable  ->  this file  ->  built-in default
+
+# Bitcoin Core's JSON-RPC endpoint.
+# Polar shows this on the node's "Connect" tab, under "RPC Host".
+rpc_url = "http://127.0.0.1:18443"
+
+# RPC credentials. Polar's defaults are polaruser / polarpass; the node's
+# "Connect" tab shows the real values.
+rpc_user = "polaruser"
+rpc_password = "polarpass"
+
+# Wallet to use for wallet commands (wallet-info, balance, new-address).
+# Omit this to use the node's default wallet, whose name is the empty string.
+# `rfb rpc listwallets` shows what the node currently has loaded.
+# wallet = "alice"

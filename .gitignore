@@ -1,0 +1,5 @@
+/target
+
+# Local configuration may hold real RPC credentials; config.example.toml is the
+# version that gets committed.
+/config.toml

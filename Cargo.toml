@@ -1,0 +1,31 @@
+[package]
+name = "rfb"
+version = "0.1.0"
+edition = "2024"
+description = "A command-line client for a Bitcoin Core node's JSON-RPC interface"
+
+[dependencies]
+# CLI parsing. The `env` feature lets one attribute declare both a flag and its
+# environment variable, which is most of the config layering for free.
+clap = { version = "4", features = ["derive", "env"] }
+
+# HTTP transport. Async, which is why tokio is here too.
+reqwest = { version = "0.13", features = ["json"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+# Typed request/response bodies, plus untyped values for the `rpc` passthrough.
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Config file format.
+toml = "0.9"
+
+# Errors: thiserror for the enum, tracing for the -v request log.
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[dev-dependencies]
+# A stub HTTP server, so the client's status/error handling can be tested
+# without a live node.
+wiremock = "0.6"
